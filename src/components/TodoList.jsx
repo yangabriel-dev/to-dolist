@@ -1,22 +1,30 @@
 import TodoItem from './TodoItem';
 
-function TodoList ({ todos, toggleCompleted, removeTodo}) {
-    return (
-        <div className='todo-list'>
-            {todos.length === 0 ? (
-                <p className='empty-message'>Nenhuma Tarefa aqui!</p>
+// Mensagem exibida quando o filtro atual não tem tarefas
+const EMPTY_MESSAGES = {
+    all: 'Página em branco. Escreva a primeira tarefa acima.',
+    active: 'Nada pendente por aqui.',
+    completed: 'Nenhuma tarefa riscada ainda.',
+};
 
-            ) : (
-                todos.map((todo) => (
-                    <TodoItem
-                      key={todo.id}
-                      todo={todo}
-                      toggleCompleted={toggleCompleted}
-                      removeTodo={removeTodo} 
-                    />
-                ))
-            )}
-        </div>
+function TodoList ({ todos, filter, toggleComplete, editTodo, removeTodo }) {
+    if (todos.length === 0) {
+        return <p className='empty-message'>{EMPTY_MESSAGES[filter]}</p>;
+    }
+
+    return (
+        <ol className='todo-list' role='list'>
+            {todos.map((todo, index) => (
+                <TodoItem
+                  key={todo.id}
+                  todo={todo}
+                  index={index}
+                  toggleComplete={toggleComplete}
+                  editTodo={editTodo}
+                  removeTodo={removeTodo}
+                />
+            ))}
+        </ol>
     );
 }
 export default TodoList;

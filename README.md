@@ -1,12 +1,32 @@
-# React + Vite
+# Minhas Tarefas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma lista de tarefas com cara de caderno editorial, feita com React e Vite.
 
-Currently, two official plugins are available:
+## Recursos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Adicionar, marcar como concluída e remover tarefas
+- Editar uma tarefa com duplo clique (ou pelo botão "editar")
+- Filtros: todas, ativas e concluídas
+- Contador de tarefas restantes e botão para limpar as concluídas
+- Tema claro (Dia) e escuro (Noite), com a escolha salva no navegador
+- Tarefas salvas no `localStorage`, então continuam lá quando você volta
 
-## Expanding the ESLint configuration
+## Como rodar
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Outros comandos:
+
+- `npm run build`: gera a versão de produção em `dist/`
+- `npm run preview`: serve a versão de produção localmente
+- `npm run lint`: verifica o código com o ESLint
+
+## Visual
+
+- Tipografia: [Fraunces](https://fonts.google.com/specimen/Fraunces) nos títulos e tarefas, [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) nos rótulos; as duas vêm do [Fontsource](https://fontsource.org), sem depender de CDN
+- Paleta de papel e tinta com acento terracota, nas edições Dia e Noite
+- Detalhes de caderno: fio duplo de jornal, linhas pautadas, margem numerada e o risco que se desenha ao concluir uma tarefa
+- As animações são desligadas para quem prefere menos movimento (`prefers-reduced-motion`)
