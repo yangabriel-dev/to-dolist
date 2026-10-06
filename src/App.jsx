@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import TodoFilter from './components/TodoFilter';
@@ -23,24 +23,26 @@ function loadTodos() {
   }
 }
 
+// Salva as tarefas no localStorage (chamado a cada mudança, sem useEffect).
+function saveTodos(todos) {
+  try {
+    localStorage.setItem('todo', JSON.stringify(todos));
+  } catch {
+    // Sem acesso ao localStorage: as tarefas valem só até fechar a página
+  }
+}
+
 function App() {
   // Estado para armazenar as tarefas.
-  const [todos, setTodos] = useState(loadTodos);
+  const [todosState, setTodosState] = useState(loadTodos);
+  const todos = todosState;
+  // Toda mudança nas tarefas passa por aqui: atualiza o estado e salva.
+  const setTodos = (next) => {
+    setTodosState(next);
+    saveTodos(next);
+  };
   // Estado para o filtro atual ('all', 'active', 'completed')
   const [filter, setFilter] = useState('all');
-
-  // Efeito para salvar os 'todos' no localStorage sempre que eles mudarem.
-  useEffect(() => {
-    localStorage.setItem('todo', JSON.stringify(todos));
-  }, [todos]);
-
-  // Depois da animação de entrada, o que aparecer na tela entra sem atraso.
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      document.documentElement.classList.add('is-ready');
-    }, 1400);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Função para adicionar uma nova tarefa
   const addTodo = (text) => {

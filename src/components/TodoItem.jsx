@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 
 function TodoItem ({ todo, index, toggleComplete, editTodo, removeTodo }) {
     // Estado da edição: se o campo está aberto e o texto digitado nele
@@ -7,15 +7,15 @@ function TodoItem ({ todo, index, toggleComplete, editTodo, removeTodo }) {
     // Marca que a edição foi fechada pelo teclado (Enter ou Esc):
     // o blur que vem depois é ignorado e o foco volta para o botão "editar".
     const closedByKeyRef = useRef(false);
-    const editButtonRef = useRef(null);
     const hintId = useId();
 
-    useEffect(() => {
-        if (!isEditing && closedByKeyRef.current) {
+    // Ref callback: quando o botão "editar" volta à tela depois de fechar com o teclado, ele recebe o foco.
+    const focusEditButton = (el) => {
+        if (el && closedByKeyRef.current) {
             closedByKeyRef.current = false;
-            editButtonRef.current?.focus();
+            el.focus();
         }
-    }, [isEditing]);
+    };
 
     // Abre o campo de edição com o texto atual
     const startEditing = () => {
@@ -94,7 +94,7 @@ function TodoItem ({ todo, index, toggleComplete, editTodo, removeTodo }) {
                     <div className="todo-actions">
                         <button
                          type="button"
-                         ref={editButtonRef}
+                         ref={focusEditButton}
                          onClick={startEditing}
                          className="edit-btn"
                          aria-label={`Editar "${todo.text}"`}>

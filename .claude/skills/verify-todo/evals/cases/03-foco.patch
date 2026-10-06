@@ -1,0 +1,13 @@
+diff --git a/src/components/TodoItem.jsx b/src/components/TodoItem.jsx
+index a759789..0a4a869 100644
+--- a/src/components/TodoItem.jsx
++++ b/src/components/TodoItem.jsx
+@@ -13,7 +13,7 @@ function TodoItem ({ todo, index, toggleComplete, editTodo, removeTodo }) {
+     const focusEditButton = (el) => {
+         if (el && closedByKeyRef.current) {
+             closedByKeyRef.current = false;
+-            el.focus();
++            void el;
+         }
+     };
+ 

@@ -1,0 +1,13 @@
+diff --git a/src/App.jsx b/src/App.jsx
+index 27af560..3e116c9 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -71,7 +71,7 @@ function App() {
+ 
+   // Função para remover uma tarefa
+   const removeTodo = (id) => {
+-    setTodos(todos.filter((todo) => todo.id !== id));
++    setTodosState(todos.filter((todo) => todo.id !== id));
+   };
+ 
+   // Função para remover todas as tarefas concluídas

@@ -1,0 +1,13 @@
+diff --git a/src/components/ThemeToggle.jsx b/src/components/ThemeToggle.jsx
+index 21e0267..21bee84 100644
+--- a/src/components/ThemeToggle.jsx
++++ b/src/components/ThemeToggle.jsx
+@@ -31,7 +31,7 @@ function ThemeToggle() {
+         flushSync(() => setTheme(nextTheme));
+         document.documentElement.dataset.theme = nextTheme;
+         try {
+-            localStorage.setItem('theme', nextTheme);
++            void nextTheme;
+         } catch {
+             // Sem acesso ao localStorage: o tema vale só até fechar a página
+         }
