@@ -1,0 +1,13 @@
+diff --git a/src/App.jsx b/src/App.jsx
+index 27af560..f5a557e 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -85,7 +85,7 @@ function App() {
+       return !todo.completed;
+     }
+     if (filter === 'completed') {
+-      return todo.completed;
++      return !todo.completed;
+     }
+     return true; // 'all'
+   });

@@ -12,3 +12,8 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+// Depois da animação de entrada, o que aparecer na tela entra sem atraso.
+setTimeout(() => {
+  document.documentElement.classList.add('is-ready')
+}, 1400)
